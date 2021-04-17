@@ -1,0 +1,68 @@
+<div>
+  <div class="card">
+    <div class="card-header">
+      <h5>{{ post?.title }}</h5>
+      <small class="text-muted">{{
+        post?.created | date: "d MMM 'at' h:mm a"
+      }}</small>
+    </div>
+    <div class="card-body">{{ post?.text }}</div>
+
+    <div class="input-group mb-1 ml-1" (keydown.enter)="leaveComment(comment)">
+      <input
+        #comment
+        type="text"
+        class="form-control rounded border"
+        placeholder="Your comment"
+        aria-label="Your comment"
+        aria-describedby="basic-addon2"
+      />
+      <div class="input-group-append">
+        <button
+          (click)="leaveComment(comment)"
+          class="btn mr-1 bg-white border-left"
+          type="button"
+        >
+          <img
+            src="../../assets/send.png"
+            width="19px"
+            height="19px"
+            keydown.enter="leaveComment(comment)"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ul class="list-group mt-3 list-unstyled">
+    <li *ngFor="let comment of post?.comments" class="mb-1">
+      <div class="card">
+        <div class="card-header">
+          <div class="page-header">
+            <div class="float-left">
+              <h6>{{ comment?.author?.login }}</h6>
+            </div>
+            <div class="float-right">
+              <button
+                *ngIf="(this.auth.getUserId() | async) === comment?.author?.id"
+                (click)="deleteComment(comment?.id || '')"
+                type="button"
+                class="close"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <small class="text-muted">{{
+            comment.created | date: "d MMM 'at' h:mm a"
+          }}</small>
+        </div>
+        <div class="card-body">
+          {{ comment.body }}
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

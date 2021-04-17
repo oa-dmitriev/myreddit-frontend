@@ -1,0 +1,29 @@
+<div class="">
+  <div class="d-flex" id="wrapper">
+    <div class="" id="sidebar-wrapper">
+      <div class="list-group list-group-flush mt-4">
+        <button
+          *ngIf="auth.isLoggedIn()"
+          routerLink="create"
+          type="button"
+          class="btn btn-primary text-left"
+        >
+          Create Post
+        </button>
+        <a routerLink="" class="nav-link text-dark border-0">All</a>
+        <a routerLink="star-wars" class="nav-link text-dark border-0"
+          >Star Wars</a
+        >
+        <a routerLink="harry-potter" class="nav-link text-dark border-0"
+          >Harry Potter</a
+        >
+      </div>
+    </div>
+
+    <div id="page-content-wrapper">
+      <div class="container-fluid mt-4">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

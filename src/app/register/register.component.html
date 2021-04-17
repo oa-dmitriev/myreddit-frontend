@@ -1,0 +1,101 @@
+<div class="row pt-5">
+  <div class="col-md-5 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="mb-0">Register</h3>
+      </div>
+
+      <div class="card-body">
+        <form class="form" [formGroup]="form" (keydown.enter)="form.valid && registerUser()">
+          <div class="form-group">
+            <label>Phone or email</label>
+            <span class="float-right text-danger">
+              <mat-error *ngIf="form.hasError('required', 'login')">
+                Required
+              </mat-error>
+            </span>
+            <input
+              type="email"
+              class="form-control"
+              matInput
+              id="exampleInputEmail1"
+              formControlName="login"
+              placeholder="Phone or email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <span class="float-right text-danger">
+              <mat-error *ngIf="form.hasError('required', 'password')">
+                Required
+              </mat-error>
+            </span>
+            <input
+              type="password"
+              class="form-control"
+              matInput
+              formControlName="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Confirm password</label>
+            <span class="float-right text-danger">
+              <mat-error *ngIf="form.hasError('notSame')">
+                Passwords do not match
+              </mat-error>
+            </span>
+            <input
+              type="password"
+              class="form-control"
+              matInput
+              formControlName="confirmPassword"
+              placeholder="Password"
+              required
+              [errorStateMatcher]="matcher"
+            />
+          </div>
+
+          <button
+            (click)="form.valid && registerUser()"
+            type="button"
+            class="btn btn-primary float-left col-md-5"
+            [attr.disabled]="!form.valid ? '' : null"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <form [formGroup]="form">
+
+  <mat-form-field class="card">
+    <input matInput formControlName="login" required />
+  </mat-form-field>
+
+  <mat-form-field class="card">
+    <input matInput formControlName="password" required />
+    <mat-error *ngIf="form.hasError('required', 'password')">
+      Please enter your new password
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="confirmPassword"
+      [errorStateMatcher]="matcher"
+    />
+
+    <mat-error *ngIf="form.hasError('notSame')">
+      Passwords do not match
+    </mat-error>
+  </mat-form-field>
+</form> -->
