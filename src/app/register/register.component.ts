@@ -48,7 +48,10 @@ export class RegisterComponent implements OnInit {
         this.auth.setUserId(res.id);
         this.router.navigate(['/posts']);
       },
-      (err) => console.log(err)
+      (err) => {
+        this.form.controls['login'].setErrors({ failed: true });
+        console.log(err);
+      }
     );
   }
 

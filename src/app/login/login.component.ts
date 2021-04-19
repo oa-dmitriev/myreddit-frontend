@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router
   ) {
     this.form = this.fb.group({
@@ -29,11 +29,14 @@ export class LoginComponent implements OnInit {
       (res) => {
         console.log(res);
         localStorage.setItem('token', res.token);
-        localStorage.setItem('id', res.id)
-        this.auth.setUserId(res.id)
+        localStorage.setItem('id', res.id);
+        this.auth.setUserId(res.id);
         this.router.navigate(['/posts']);
       },
-      (err) => console.log('Login error', err)
+      (err) => {
+        this.form.controls['login'].setErrors({incorrect: true})
+        console.log('Login error');
+      }
     );
   }
 }

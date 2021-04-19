@@ -5,11 +5,21 @@
         <h3 class="mb-0">Login</h3>
       </div>
 
+      <div
+        class="text-center pt-3 text-danger"
+        *ngIf="form.hasError('incorrect', 'login')"
+      >
+        <b>Failed to sign in.</b>
+      </div>
       <div class="card-body">
-
-        <form class="form" [formGroup]="form" (keydown.enter)="form.valid && loginUser()">
+        <form
+          class="form"
+          [formGroup]="form"
+          (keydown.enter)="form.valid && loginUser()"
+        >
           <div class="form-group">
             <label>Phone or email</label>
+
             <span class="float-right text-danger">
               <mat-error *ngIf="form.hasError('required', 'login')">
                 Required
@@ -47,7 +57,12 @@
             (click)="loginUser()"
             type="button"
             class="btn btn-primary float-left col-md-5"
-            [attr.disabled]="!form.valid ? '' : null"
+            [attr.disabled]="
+              form.hasError('required', 'password') ||
+              form.hasError('required', 'login')
+                ? ''
+                : null
+            "
           >
             Login
           </button>

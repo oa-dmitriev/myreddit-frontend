@@ -5,8 +5,19 @@
         <h3 class="mb-0">Register</h3>
       </div>
 
+      <div
+        class="text-center pt-3 text-danger"
+        *ngIf="form.hasError('failed', 'login')"
+      >
+        <b>Failed to sign up.</b>
+      </div>
+
       <div class="card-body">
-        <form class="form" [formGroup]="form" (keydown.enter)="form.valid && registerUser()">
+        <form
+          class="form"
+          [formGroup]="form"
+          (keydown.enter)="form.valid && registerUser()"
+        >
           <div class="form-group">
             <label>Phone or email</label>
             <span class="float-right text-danger">
