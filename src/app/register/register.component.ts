@@ -42,7 +42,6 @@ export class RegisterComponent implements OnInit {
     const val = this.form.value;
     this.auth.registerUser(val).subscribe(
       (res) => {
-        console.log(res);
         localStorage.setItem('token', res.token);
         localStorage.setItem('id', res.id);
         this.auth.setUserId(res.id);

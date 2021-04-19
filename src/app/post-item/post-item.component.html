@@ -1,6 +1,17 @@
 <div *ngIf="post">
   <div class="card">
     <div class="card-header">
+      <div class="float-right">
+        <button
+          *ngIf="(this.auth.getUserId() | async) === post?.author?.id"
+          (click)="deletePost(post?.id || '')"
+          type="button"
+          class="close"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <h5>
         <a
           routerLink="/posts/{{ post!.category }}/{{ post!.id }}"
@@ -11,11 +22,10 @@
       </h5>
 
       <small>
-        <!-- <span class="font-weight-bold"> -->
         <span class="">
           {{ post?.author?.login }}
-        </span> 
-        <br>
+        </span>
+        <br />
         <span class="text-muted"
           >{{ post?.created | date: "d MMM 'at' h:mm a" }}
         </span>
@@ -61,7 +71,4 @@
       </a>
     </div>
   </div>
-</div>
-<div *ngIf="!post">
-  <div class="alert alert-light text-center" role="alert">No posts yet</div>
 </div>

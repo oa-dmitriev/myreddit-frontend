@@ -17,7 +17,6 @@ export class PostListComponent implements OnInit {
   ) {
     route.params.subscribe(res=>{
     const category = this.route.snapshot.paramMap.get('category') || '';
-    console.log("post-list: ", category)
     this.postService.getByCategory(category).subscribe(
       (res) => {
         this.posts = res;

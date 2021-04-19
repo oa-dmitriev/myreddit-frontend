@@ -15,10 +15,7 @@ export class AuthService {
 
   private userId: BehaviorSubject<string>;
 
-  // private id: string = '';
-
   constructor(private router: Router, private http: HttpClient) {
-    console.log('construction is called and: ', localStorage.getItem('id'));
     this.userId = new BehaviorSubject<string>(localStorage.getItem('id') || '');
   }
 
@@ -29,10 +26,6 @@ export class AuthService {
   getUserId(): Observable<string> {
     return this.userId.asObservable();
   }
-
-  // getUserId(): string {
-  //   return this.id;
-  // }
 
   registerUser(user: any) {
     return this.http.post<any>(this.registerUrl, user);
@@ -45,10 +38,6 @@ export class AuthService {
   logoutUser() {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
-    const url = '/posts';
-    // this.router.navigate([url]);
-    // this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    //   this.router.navigate([url]));
   }
 
   isLoggedIn() {

@@ -1,5 +1,8 @@
-<div class="list-group">
+<div *ngIf="posts" class="list-group">
   <div *ngFor="let post of posts">
     <app-post-item [post]="post"></app-post-item>
   </div>
+</div>
+<div *ngIf="!posts">
+  <div class="alert alert-light text-center" role="alert">No posts yet</div>
 </div>

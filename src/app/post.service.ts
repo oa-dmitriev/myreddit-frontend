@@ -39,6 +39,11 @@ export class PostService {
     return this.http.delete<any>(url)
   }
 
+  deletePost(postId: string) {
+    const url = `${this.postsUrl}/${postId}`
+    return this.http.delete<any>(url)
+  }
+
   like(category: string, postId: string) {
     const url = `${this.postsUrl}/${category}/${postId}/like`
     return this.http.get<any>(url)

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Post } from '../pkg/post';
 import { PostService } from '../post.service';
@@ -16,7 +16,8 @@ export class PostItemComponent implements OnInit {
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,
-    public auth: AuthService
+    public auth: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +40,19 @@ export class PostItemComponent implements OnInit {
             this.heartClass = 'fa-heart-o';
           }
           this.post = res.post;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
+  }
+
+  deletePost(postId: string) {
+    if (postId != '') {
+      this.postService.deletePost(postId).subscribe(
+        (res) => {
+          this.post = undefined;
         },
         (err) => {
           console.log(err);

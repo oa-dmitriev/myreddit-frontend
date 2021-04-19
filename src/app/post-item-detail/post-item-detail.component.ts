@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Post } from '../pkg/post';
 import { PostService } from '../post.service';
@@ -15,7 +15,8 @@ export class PostItemDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
-    public auth: AuthService
+    public auth: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +39,6 @@ export class PostItemDetailComponent implements OnInit {
   leaveComment(comment: any) {
     const commentMessage = comment.value || '';
     const postId = this.route.snapshot.paramMap.get('id') || '';
-    console.log('Comment: ', comment.value, postId);
     if (commentMessage != '' && postId != '') {
       this.postService.newComment(commentMessage, postId).subscribe(
         (res) => {
@@ -57,7 +57,20 @@ export class PostItemDetailComponent implements OnInit {
     if (commentId != '' && postId != '') {
       this.postService.deleteComment(postId, commentId).subscribe(
         (res) => {
-          this.post = res
+          this.post = res;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
+  }
+
+  deletePost(postId: string) {
+    if (postId != '') {
+      this.postService.deletePost(postId).subscribe(
+        (res) => {
+          this.router.navigate(['/posts']);
         },
         (err) => {
           console.log(err);
