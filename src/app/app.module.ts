@@ -19,7 +19,6 @@ import { PostListComponent } from './post-list/post-list.component';
 import { PostService } from './post.service';
 import { PostItemComponent } from './post-item/post-item.component';
 import { PostComponent } from './post/post.component';
-// import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostItemDetailComponent } from './post-item-detail/post-item-detail.component';
 import { PostCreateComponent } from './post-create/post-create.component';
 
@@ -31,7 +30,6 @@ import { PostCreateComponent } from './post-create/post-create.component';
     PostListComponent,
     PostItemComponent,
     PostComponent,
-    // PostDetailComponent,
     PostItemDetailComponent,
     PostCreateComponent,
   ],

@@ -5,7 +5,7 @@ import { Post, Comment } from './pkg/post';
   providedIn: 'root',
 })
 export class PostService {
-  postsUrl = '/api/posts';
+  postsUrl = 'https://myreddit-backend.herokuapp.com/api/posts';
 
   constructor(private http: HttpClient) {}
 

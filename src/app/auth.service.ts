@@ -9,8 +9,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root',
 })
 export class AuthService {
-  registerUrl = '/api/register';
-  loginUrl = '/api/login';
+  registerUrl = 'https://myreddit-backend.herokuapp.com/api/register';
+  loginUrl = 'https://myreddit-backend.herokuapp.com/api/login';
   helper = new JwtHelperService();
 
   private userId: BehaviorSubject<string>;
