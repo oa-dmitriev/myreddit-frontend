@@ -7,6 +7,6 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'meetup-app-frontend';
+  title = 'myreddit-frontend';
   constructor(public auth: AuthService, private authService: AuthService) {}
 }
