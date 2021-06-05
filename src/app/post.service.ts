@@ -19,6 +19,9 @@ export class PostService {
   }
 
   getByCategory(category: string) {
+    if (category == "") {
+      return this.http.get<any>(this.postsUrl)
+    }
     const url = `${this.postsUrl}/${category}`;
     return this.http.get<any>(url);
   }
