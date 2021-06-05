@@ -22,6 +22,8 @@ import { PostComponent } from './post/post.component';
 import { PostItemDetailComponent } from './post-item-detail/post-item-detail.component';
 import { PostCreateComponent } from './post-create/post-create.component';
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +54,10 @@ import { PostCreateComponent } from './post-create/post-create.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true,
+    },
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
     },
   ],
   bootstrap: [AppComponent],
