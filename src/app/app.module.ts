@@ -23,6 +23,7 @@ import { PostItemDetailComponent } from './post-item-detail/post-item-detail.com
 import { PostCreateComponent } from './post-create/post-create.component';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CategoryCreateComponent } from './category-create/category-create.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     PostComponent,
     PostItemDetailComponent,
     PostCreateComponent,
+    CategoryCreateComponent,
   ],
   imports: [
     BrowserModule,

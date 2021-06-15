@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { CategoryCreateComponent } from './category-create/category-create.component';
 import { LoginComponent } from './login/login.component';
 import { PostCreateComponent } from './post-create/post-create.component';
 import { PostItemDetailComponent } from './post-item-detail/post-item-detail.component';
@@ -20,6 +21,8 @@ const routes: Routes = [
         component: PostListComponent,
       },
       { path: 'create', component: PostCreateComponent, pathMatch: 'full'},
+      // { path: 'create', component: CategoryCreateComponent, pathMatch: 'full'},
+      { path: 'category/create', component: CategoryCreateComponent, pathMatch: 'full'},
       { path: ':category', component: PostListComponent},
       { path: ':category/:id', component: PostItemDetailComponent },
     ],

@@ -6,13 +6,36 @@
         reddit
       </a>
       <ul class="navbar-nav ml-auto">
-        <a
-          class="nav-link text-dark"
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Create
+          </button>
+          <div class="dropdown-menu dropdown-menu-left">
+            <a class="dropdown-item" type="button" href="/posts">Category</a>
+            <a class="dropdown-item" type="button" href="/posts">Post</a>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn"
           *ngIf="!auth.isLoggedIn()"
           routerLink="/login"
           routerLinkActive="active"
-          >Login</a
+          >Login</button
         >
+        <!-- <a -->
+          <!-- class="nav-link text-dark" -->
+          <!-- *ngIf="!auth.isLoggedIn()" -->
+          <!-- routerLink="/login" -->
+          <!-- routerLinkActive="active" -->
+          <!-- >Login</a -->
+        <!-- > -->
         <a
           class="nav-link text-dark"
           *ngIf="!auth.isLoggedIn()"
