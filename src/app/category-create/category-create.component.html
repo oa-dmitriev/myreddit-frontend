@@ -1,3 +1,51 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">asdfasdfs</div>
-</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" [formGroup]="form">
+      <h5 class="text-center">Create a category</h5>
+
+      <div class="form-group">
+        <label for="title">Name</label>
+        <span class="text-danger">
+          <mat-error *ngIf="form.hasError('required', 'name')"> * </mat-error>
+        </span>
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control"
+          name="title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <span class="text-danger">
+          <mat-error *ngIf="form.hasError('required', 'description')">
+            *
+          </mat-error>
+        </span>
+        <textarea
+          formControlName="description"
+          rows="5"
+          class="form-control"
+          name="description"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <a
+          [ngClass]="{
+            disabled:
+              form.hasError('required', 'name') ||
+              form.hasError('required', 'description')
+          }"
+          href="/"
+          class="btn btn-primary"
+          role="button"
+          (click)="create()"
+          aria-disabled="true"
+          >Create</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

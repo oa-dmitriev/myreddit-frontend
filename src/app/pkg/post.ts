@@ -5,8 +5,8 @@ export interface User {
 }
 
 export interface Post {
-  votes?: User[],
-  score?: number,
+  votes?: User[];
+  score?: number;
   id?: string;
   text: string;
   title: string;
@@ -14,6 +14,11 @@ export interface Post {
   author?: User;
   comments?: Comment[];
   created?: string;
+}
+
+export interface Category {
+  name: string;
+  description: string;
 }
 
 export interface Comment {

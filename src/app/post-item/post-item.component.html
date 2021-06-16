@@ -20,11 +20,15 @@
           {{ post?.title }}
         </a>
       </h5>
-
       <small>
-        <span class="">
-          {{ post?.author?.login }}
-        </span>
+        <a routerLink="/posts/{{ post!.category }}" routerLinkActive="active">
+          <span class="">
+            {{ post?.category }}
+          </span>
+        </a>
+        <br />
+        <span class="text-muted"> Posted by </span>
+        <span>{{ post?.author?.login }} </span>
         <br />
         <span class="text-muted"
           >{{ post?.created | date: "d MMM 'at' h:mm a" }}

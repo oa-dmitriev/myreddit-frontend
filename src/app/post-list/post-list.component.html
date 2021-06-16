@@ -3,6 +3,6 @@
     <app-post-item [post]="post"></app-post-item>
   </div>
 </div>
-<div *ngIf="!posts">
+<div *ngIf="posts.length == 0">
   <div class="alert alert-light text-center" role="alert">No posts yet</div>
 </div>

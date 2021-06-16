@@ -2,33 +2,16 @@
   <div class="d-flex" id="wrapper">
     <div class="" id="sidebar-wrapper">
       <div class="list-group list-group-flush mt-4">
-        <!-- <button
-          *ngIf="auth.isLoggedIn()"
-          routerLink="create"
-          type="button"
-          class="btn btn-primary text-left"
-        >
-          Create Post
-        </button> -->
         <a routerLink="/posts" class="nav-link text-dark border-0">All</a>
-        <a routerLink="star-wars" class="nav-link text-dark border-0"
-          >Star Wars</a
-        >
-        <a routerLink="harry-potter" class="nav-link text-dark border-0"
-          >Harry Potter</a
-        >
-        <a
-          *ngIf="auth.isLoggedIn()"
-          routerLink="create"
-          class="nav-link text-dark border-0"
-          >New Post</a
-        >
-        <a
-          *ngIf="auth.isLoggedIn()"
-          routerLink="category/create"
-          class="nav-link text-dark border-0"
-          >New Category</a
-        >
+
+        <div *ngFor="let category of categories">
+          <a
+            routerLink="{{ category.name }}"
+            class="nav-link text-dark border-0"
+          >
+            {{ replaceString(category.name) }}
+          </a>
+        </div>
       </div>
     </div>
 

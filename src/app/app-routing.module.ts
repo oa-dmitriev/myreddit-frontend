@@ -20,18 +20,20 @@ const routes: Routes = [
         path: '',
         component: PostListComponent,
       },
-      { path: 'create', component: PostCreateComponent, pathMatch: 'full'},
-      // { path: 'create', component: CategoryCreateComponent, pathMatch: 'full'},
-      { path: 'category/create', component: CategoryCreateComponent, pathMatch: 'full'},
-      { path: ':category', component: PostListComponent},
+      {
+        path: 'create',
+        component: PostCreateComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'category/create',
+        component: CategoryCreateComponent,
+        pathMatch: 'full',
+      },
+      { path: ':category', component: PostListComponent },
       { path: ':category/:id', component: PostItemDetailComponent },
     ],
   },
-  // {
-  //   path: 'special',
-  //   component: SpecialEventsComponent,
-  //    canActivate: [AuthGuard],
-  // },
   {
     path: 'login',
     component: LoginComponent,
@@ -43,7 +45,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -11,23 +11,19 @@ import { PostService } from '../post.service';
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
 
-  constructor(
-    private postService: PostService,
-    private route: ActivatedRoute
-  ) {
-    route.params.subscribe(res=>{
-    const category = this.route.snapshot.paramMap.get('category') || '';
-    this.postService.getByCategory(category).subscribe(
-      (res) => {
-        this.posts = res;
-      },
-      (err) => {
-        console.log(err.error);
-      }
-    );
-    })
+  constructor(private postService: PostService, private route: ActivatedRoute) {
+    route.params.subscribe((res) => {
+      const category = this.route.snapshot.paramMap.get('category') || '';
+      this.postService.getByCategory(category).subscribe(
+        (res) => {
+          this.posts = res;
+        },
+        (err) => {
+          console.log(err.error);
+        }
+      );
+    });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

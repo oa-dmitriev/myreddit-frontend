@@ -1,58 +1,66 @@
-<div class="card">
-  <div class="card-body" [formGroup]="form">
-    <div class="input-group mb-3">
-      <div class="input-group-append col-2">
-        <label
-          class="input-group-text col-12 text-center"
-          for="inputGroupSelect02"
-          >Category</label
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" [formGroup]="form">
+      <h5 class="text-center">Create a post</h5>
+      <div class="form-group">
+        <label>Category</label>
+        <span class="text-danger">
+          <mat-error *ngIf="form.hasError('required', 'category')">
+            *
+          </mat-error>
+        </span>
+        <select
+          formControlName="category"
+          class="form-select"
+          aria-label="Default select example"
         >
+          <option
+            *ngFor="let category of categories"
+            value="{{ category.name }}"
+          >
+            {{ replaceString(category.name) }}
+          </option>
+        </select>
       </div>
 
-      <select
-        formControlName="category"
-        class="custom-select"
-        id="inputGroupSelect02"
-      >
-        <option value="star-wars">Star Wars</option>
-        <option value="harry-potter">Harry Potter</option>
-      </select>
-    </div>
-
-    <div class="input-group mb-3">
-      <div class="input-group-append col-2">
-        <label class="input-group-text col-12" for="inputGroupSelect02"
-          >Title</label
-        >
+      <div class="form-group">
+        <label for="title">Title</label>
+        <span class="text-danger">
+          <mat-error *ngIf="form.hasError('required', 'title')"> * </mat-error>
+        </span>
+        <input
+          formControlName="title"
+          type="text"
+          class="form-control"
+          name="title"
+        />
       </div>
-      <input
-        formControlName="title"
-        type="text"
-        class="form-control"
-        placeholder="Title"
-      />
-    </div>
 
-    <div class="input-group mb-3" (keydown.control.enter)="create()">
-      <div class="input-group-append col-2">
-        <label class="input-group-text col-12" for="inputGroupSelect02"
-          >Text</label
-        >
+      <div class="form-group">
+        <label for="description">Description</label>
+        <span class="text-danger">
+          <mat-error *ngIf="form.hasError('required', 'text')"> * </mat-error>
+        </span>
+        <textarea
+          formControlName="text"
+          rows="5"
+          class="form-control"
+          name="description"
+        ></textarea>
       </div>
-      <textarea
-        formControlName="text"
-        class="form-control"
-        id="exampleFormControlTextarea1"
-        rows="3"
-      ></textarea>
-    </div>
 
-    <div class="input-group mb-3">
-      <div class="input-group-append col-2">
+      <div class="form-group">
         <button
+          [attr.disabled]="
+            form.hasError('required', 'title') ||
+            form.hasError('required', 'category') ||
+            form.hasError('required', 'text')
+              ? ''
+              : null
+          "
           (click)="create()"
-          type="button"
-          class="btn btn-primary float-left col-12"
+          type="submit"
+          class="btn btn-primary"
         >
           Create
         </button>
