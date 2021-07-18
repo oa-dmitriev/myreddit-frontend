@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from './pkg/post';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -10,8 +9,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
   registerUrl = 'https://myreddit-backend.herokuapp.com/api/register';
-  // loginUrl = 'https://myreddit-backend.herokuapp.com/api/login';
-  loginUrl = '/api/login';
+  loginUrl = 'https://myreddit-backend.herokuapp.com/api/login';
+  // loginUrl = '/api/login';
   helper = new JwtHelperService();
 
   private userId: BehaviorSubject<string>;

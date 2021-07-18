@@ -5,10 +5,10 @@ import { Post, Comment, Category } from './pkg/post';
   providedIn: 'root',
 })
 export class PostService {
-  // postsUrl = 'https://myreddit-backend.herokuapp.com/api/posts';
-  // categoryUrl = 'https://myreddit-backend.herokuapp.com/api/category';
-  postsUrl = '/api/posts';
-  categoryUrl = '/api/category';
+  postsUrl = 'https://myreddit-backend.herokuapp.com/api/posts';
+  categoryUrl = 'https://myreddit-backend.herokuapp.com/api/category';
+  // postsUrl = '/api/posts';
+  // categoryUrl = '/api/category';
 
   constructor(private http: HttpClient) {}
 
